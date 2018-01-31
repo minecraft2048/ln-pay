@@ -11,14 +11,17 @@ if not sys.stdout.isatty():
     from gi.repository import Gtk
     import notify2
 
-RPC_ADDR = 'localhost:10009'
+#Autopay setting
 MAX_AUTOPAY_AMT = 0.05 #Maximum amount of mBTC that will be automatically paid
 MIN_AUTOPAY_BALANCE = 2 #Minimum channel amount in mBTC for autopaying LN transaction
-whitelist = ['02d28c3aac4b4f36746052a735831afbe65bc5698a7be5bd41b42fd1ddf2a1a358'] #Whitelist of public keys that will be automatically paid
+whitelist = [] #Whitelist of public keys that will be automatically paid by ln-pay
 
 ICON_SUCCESS = os.path.expanduser('~/.local/share/applications/lightning-128x128.png')
 ICON_FAILURE = os.path.expanduser('~/.local/share/applications/Gnome-dialog-error.svg')
 
+
+#RPC settings
+RPC_ADDR = 'localhost:10009'
 CERT = open(os.path.expanduser('~/.lnd/tls.cert')).read()
 CREDS = grpc.ssl_channel_credentials(CERT)
 channel = grpc.secure_channel(RPC_ADDR, CREDS)
