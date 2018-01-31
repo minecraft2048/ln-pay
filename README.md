@@ -1,6 +1,6 @@
 # ln-pay
 ## A minimalistic payment only 'wallet' for lnd
-
+http://webm.land/media/z9cW.webm
 # DISCLAIMER: Do not use this on mainnet, this is still untested for security
 
 ## Features
