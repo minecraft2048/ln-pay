@@ -16,8 +16,11 @@ MAX_AUTOPAY_AMT = 0.05 #Maximum amount of mBTC that will be automatically paid
 MIN_AUTOPAY_BALANCE = 2 #Minimum channel amount in mBTC for autopaying LN transaction
 whitelist = ['02d28c3aac4b4f36746052a735831afbe65bc5698a7be5bd41b42fd1ddf2a1a358'] #Whitelist of public keys that will be automatically paid
 
-ICON_SUCCESS = os.path.expanduser('~/.local/share/applications/lightning-128x128.png')
-ICON_FAILURE = os.path.expanduser('~/.local/share/applications/Gnome-dialog-error.svg')
+#ICON_SUCCESS = os.path.expanduser('~/.local/share/applications/lightning-128x128.png')
+#ICON_FAILURE = os.path.expanduser('~/.local/share/applications/Gnome-dialog-error.svg')
+
+ICON_SUCCESS = ''
+ICON_FAILURE = ''
 
 CERT = open(os.path.expanduser('~/.lnd/tls.cert')).read()
 CREDS = grpc.ssl_channel_credentials(CERT)
@@ -101,7 +104,7 @@ else:
     SERVER_CAPS = notify2.get_server_caps()
     if 'actions' in SERVER_CAPS:
         if DEST in whitelist and MBTC <= MAX_AUTOPAY_AMT and BALANCE >= MIN_AUTOPAY_BALANCE :
-            notify2.Notification("Lightning Pay", "Autopaying to \n{}\n for {}\nwith {} mBTC".format(DEST,DESC,MBTC),icon=ICON_SUCCESS).show()
+            notify2.Notification("Lightning Pay", "Autopaying to \n{}\nfor {}\nwith {} mBTC".format(DEST,DESC,MBTC),icon=ICON_SUCCESS).show()
             PAYMENT = stub.SendPaymentSync(ln.SendRequest(payment_request=LN_INVOICE))
             if PAYMENT.payment_error:
                 notify2.Notification("Lightning Pay", "Transaction to \n{}\nfailed with \n{}".format(DEST,PAYMENT.payment_error),icon=ICON_FAILURE).show()
