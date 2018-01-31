@@ -58,7 +58,7 @@ Path=
 StartupNotify=false
 ```
 
-and append `x-scheme-handler/lightning=ln-pay.desktop` to `~/.local/share/applications/mimeapps.list`
+and append `x-scheme-handler/lightning=ln-pay.desktop` to `~/.local/share/applications/mimeapps.list` then run `update-desktop-database`
 
 This will launch a terminal running `ln-pay.py` every time `lightning:` links are clicked. To use Desktop Notifications GUI, replace `Terminal=true` in `ln-pay.desktop` to `Terminal=false`
 
