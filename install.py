@@ -1,5 +1,5 @@
 import os
-from sys import platform
+import sys
 
 desktop_file = [
     "[Desktop Entry]",
@@ -21,9 +21,12 @@ APP = (os.getcwd() + "/python3 ln-pay.py")
 LOCALPATH = os.getcwd()
 ICONPATH = os.path.expanduser('~/.local/share/icons/hicolor/128x128/apps')
 
-if platform.startswith('linux') and False:
+if sys.platform.startswith('linux') and False:
     desktop_file[4] = "Exec={} %u".format(APP)
-    choice = input("Run ln-app for protocol integration in terminal or use Desktop Notifications\nEnter 1 or 2")
+    choice = input("ln-pay can be integrated into the desktop in two ways: \
+                    \n1. Launch a terminal running ln-pay asking for confirmation \
+                    \n2. Send a notification through Linux Desktop Notification asking for confirmation\
+                    \nChoose 1 or 2 ")
     if choice == '1':
         desktop_file[6] = "Terminal=true"
     elif choice == '2':
@@ -42,6 +45,7 @@ if platform.startswith('linux') and False:
             f.write(MIMETYPE)
         print("Installation complete")
     else:
-        pass
+        print("Installation cancelled")
 else:
-    print("OSes other than Linux are not supported by this install script")
+    print("OSes other than Linux are currently not supported by this install script")
+    sys.exit(1)
