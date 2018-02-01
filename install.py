@@ -21,7 +21,7 @@ APP = (os.getcwd() + "/python3 ln-pay.py")
 LOCALPATH = os.getcwd()
 ICONPATH = os.path.expanduser('~/.local/share/icons/hicolor/128x128/apps')
 
-if sys.platform.startswith('linux') and False:
+if sys.platform.startswith('linux'):
     desktop_file[4] = "Exec={} %u".format(APP)
     choice = input("ln-pay can be integrated into the desktop in two ways: \
                     \n1. Launch a terminal running ln-pay asking for confirmation \
