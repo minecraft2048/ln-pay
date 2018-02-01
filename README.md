@@ -20,7 +20,7 @@ Use `lncli` to do those things
 
 ## Why?
 
-Existing lnd frontends such as `lightning-pay` or `zap` is extremely large, pulling over hundreds of megabytes of `node.js` and `electron` dependencies, and both of them does not install on my computer for some reason. `ln-pay` only have 1 required dependency and 2 optional dependency
+Existing lnd frontends such as `lightning-pay` or `zap` are extremely large, requiring hundreds of megabytes of `node.js` and `electron` dependencies, and neither will install on my computer for some reason. `ln-pay` only has one required dependency with two optional dependencies.
 
 ## Dependencies
 
@@ -33,14 +33,13 @@ Existing lnd frontends such as `lightning-pay` or `zap` is extremely large, pull
 - [PyGObject](https://pygobject.readthedocs.io/en/latest/getting_started.html)
 - [notify2](https://pypi.python.org/pypi/notify2)
 
-
 ## Installation
-`git clone` this repository, and run `ln-pay.py` on this directory for CLI mode.
+`git clone` this repository, and run `ln-pay.py` in this directory for CLI mode.
 
 ## `lightning:` protocol integration
-To register `ln-pay` as `lightning:` protocol handler so that you can click the `lightning:` link in your browser:
+To register `ln-pay` as a URI handler so that `lightning:` links work in your browser:
 
-### Linux
+### GNU/Linux
 
 Add this snippet to `~/.local/share/applications` as `ln-pay.desktop`:
 
@@ -65,8 +64,8 @@ This will launch a terminal running `ln-pay.py` every time `lightning:` links ar
 
 ## How to Use
 
-`ln-pay` supports 2 modes, terminal/CLI interactive mode, and headless
- mode, where it interacts using [Desktop Notification Specification](https://developer.gnome.org/notification-spec/)
+`ln-pay` supports 2 modes: terminal/CLI interactive mode, and a GUI
+ mode where it interacts using Gnome's [Desktop Notification Specification](https://developer.gnome.org/notification-spec/)
 
  ### Terminal mode
 
@@ -82,7 +81,7 @@ Demo TBD
 
 ## Setting up automatic payment
 
-Add public keys that `ln-pay` will automatically pay to this whitelist:
+Add public keys that `ln-pay` should automatically pay to this whitelist:
 ```
 #Autopay setting
 MAX_AUTOPAY_AMT = 0.05 #Maximum amount of mBTC that will be automatically paid
